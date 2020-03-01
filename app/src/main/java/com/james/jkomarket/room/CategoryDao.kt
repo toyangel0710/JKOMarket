@@ -8,8 +8,12 @@ import com.james.jkomarket.product.model.Category
 interface CategoryDao {
 
     @Insert
-    suspend fun create(category: Category): Long
+    suspend fun insert(category: Category): Long
 
     @Query("SELECT * from category_table WHERE id = :id")
     fun getCategory(id: Long): LiveData<List<Category>>
+
+
+    @Query("DELETE FROM category_table")
+    suspend fun deleteAll()
 }

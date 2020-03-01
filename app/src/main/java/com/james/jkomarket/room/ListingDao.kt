@@ -8,7 +8,7 @@ import com.james.jkomarket.product.model.Listing
 interface ListingDao {
 
     @Insert
-    suspend fun create(listing: Listing): Long
+    suspend fun insert(listing: Listing): Long
 
     @Query("DELETE FROM listing_table WHERE user_name = :userName and id = :id")
     suspend fun delect(userName: String, id: Long)
@@ -21,4 +21,7 @@ interface ListingDao {
 
     @Query("SELECT * from listing_table")
     fun getTopCategory(): LiveData<List<Listing>>
+
+    @Query("DELETE FROM listing_table")
+    suspend fun deleteAll()
 }

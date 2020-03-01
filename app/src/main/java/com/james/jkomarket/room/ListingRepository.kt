@@ -5,7 +5,7 @@ import com.james.jkomarket.product.model.Listing
 
 class ListingRepository(private val listingDao: ListingDao) {
 
-    suspend fun create(listing: Listing): Long = listingDao.create(listing)
+    suspend fun create(listing: Listing): Long = listingDao.insert(listing)
 
     suspend fun delete(userName: String, id: Long) {
         // TODO Check if user mismatch

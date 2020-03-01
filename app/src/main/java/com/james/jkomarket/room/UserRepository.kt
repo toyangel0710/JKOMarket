@@ -6,7 +6,7 @@ import com.james.jkomarket.account.model.User
 class UserRepository(private val userDao: UserDao) {
 
     suspend fun setUser(user: User): Long {
-        return userDao.setUser(user)
+        return userDao.insert(user)
     }
 
     suspend fun getUser(name: String): LiveData<List<User>> = userDao.getUser(name)

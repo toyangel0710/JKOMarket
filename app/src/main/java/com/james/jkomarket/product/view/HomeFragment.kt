@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
         val listings = ArrayList<Listing>()
 
 
+
         return view
     }
 }

@@ -16,6 +16,8 @@ data class Category(
 
     var name: String,
 
+    var listing_count: Long,
+
     @ColumnInfo(name = "created_at")
     var createAt: Long = Date(System.currentTimeMillis()).time,
 

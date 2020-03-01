@@ -22,7 +22,7 @@ data class Listing(
 
     var user_name: String,
 
-    var category: Int,
+    var category: Long,
 
     @ColumnInfo(name = "created_at")
     var createAt: Long = Date(System.currentTimeMillis()).time,

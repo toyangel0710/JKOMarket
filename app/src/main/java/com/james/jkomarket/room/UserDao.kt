@@ -11,8 +11,11 @@ import com.james.jkomarket.account.model.User
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun setUser(user: User): Long
+    suspend fun insert(user: User): Long
 
     @Query("SELECT * from user_table WHERE name = :userName")
     fun getUser(userName: String): LiveData<List<User>>
+
+    @Query("DELETE FROM user_table")
+    suspend fun deleteAll()
 }

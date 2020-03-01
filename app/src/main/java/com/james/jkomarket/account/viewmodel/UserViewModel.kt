@@ -18,7 +18,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: UserRepository
     private val _signupResult = MutableLiveData<SignupResult>()
     val signupResult: LiveData<SignupResult> = _signupResult
-    private lateinit var userState: UserState
+    private var userState: UserState
 
     init {
         val userDao = JkoMarketDatabase.getDatabase(application, viewModelScope).userDao()
