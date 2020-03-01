@@ -7,4 +7,6 @@
     <string name="login_fail_user_not_exit">User not exist</string>
     <string name="signup_fail_username_exit">User already existing</string>
     <string name="unknown_user">Unknown user</string>
+    <string name="title_home">Home</string>
+    <string name="title_me">Me</string>
 </resources>
