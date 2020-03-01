@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">JKOMarket</string>
+    <string name="login_or_signup">Login or Signup</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="success">Success</string>
+    <string name="login_fail_user_not_exit">User not exist</string>
+    <string name="signup_fail_username_exit">User already existing</string>
+    <string name="unknown_user">Unknown user</string>
 </resources>
