@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.james.jkomarket.R
 import com.james.jkomarket.account.SignupResult
-import com.james.jkomarket.account.User
+import com.james.jkomarket.account.model.User
 import com.james.jkomarket.account.UserState
 import com.james.jkomarket.room.JkoMarketDatabase
 import com.james.jkomarket.room.UserRepository

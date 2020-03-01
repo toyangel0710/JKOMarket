@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.james.jkomarket.account.User
+import com.james.jkomarket.account.model.User
 
 @Dao
 interface UserDao {

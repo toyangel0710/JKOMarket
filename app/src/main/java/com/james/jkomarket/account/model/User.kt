@@ -1,4 +1,4 @@
-package com.james.jkomarket.account
+package com.james.jkomarket.account.model
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

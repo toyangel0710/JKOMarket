@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.james.jkomarket.R
+import com.james.jkomarket.product.model.Listing
 import com.james.jkomarket.product.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -21,11 +23,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        val swipeRefresh: SwipeRefreshLayout = view.findViewById(R.id.swipeRefresh)
+        swipeRefresh.setOnRefreshListener { homeViewModel.refresh() }
+
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+
+        val listings = ArrayList<Listing>()
+
+
+        return view
     }
 }

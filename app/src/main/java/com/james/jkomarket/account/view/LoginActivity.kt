@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.james.jkomarket.MainActivity
 import com.james.jkomarket.R
-import com.james.jkomarket.account.User
+import com.james.jkomarket.account.model.User
 import com.james.jkomarket.account.viewmodel.UserViewModel
 import com.james.jkomarket.utils.KeyboardUtils
 import kotlinx.android.synthetic.main.activity_login.*
@@ -32,7 +32,10 @@ class LoginActivity : AppCompatActivity() {
                 // Hide keyboard
                 KeyboardUtils.hideKeyboard(it)
 
-                val user = User(0, userName.text.toString())
+                val user = User(
+                    0,
+                    userName.text.toString()
+                )
                 userViewModel.setUser(user)
             }
         }

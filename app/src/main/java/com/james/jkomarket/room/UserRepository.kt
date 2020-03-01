@@ -1,6 +1,6 @@
 package com.james.jkomarket.room
 
-import com.james.jkomarket.account.User
+import com.james.jkomarket.account.model.User
 
 class UserRepository(private val userDao: UserDao) {
 
