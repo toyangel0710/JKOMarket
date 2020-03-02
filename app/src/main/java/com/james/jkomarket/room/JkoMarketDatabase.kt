@@ -71,10 +71,6 @@ abstract class JkoMarketDatabase : RoomDatabase() {
             val listingDao = database.listingDao()
             val categoryDao = database.categoryDao()
 
-//            userDao.deleteAll()
-//            listingDao.deleteAll()
-//            categoryDao.deleteAll()
-
             // Create default User1, User2
             userDao.insert(User(0, "user1"))
             userDao.insert(User(0, "user2"))

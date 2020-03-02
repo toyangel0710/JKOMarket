@@ -11,10 +11,13 @@ interface ListingDao {
     suspend fun insert(listing: Listing): Long
 
     @Query("DELETE FROM listing_table WHERE user_name = :userName and id = :id")
-    suspend fun delect(userName: String, id: Long)
+    suspend fun delect(userName: String, id: Long): Int
 
     @Query("SELECT * from listing_table WHERE id = :id")
     fun getListing(id: Long): LiveData<List<Listing>>
+
+    @Query("SELECT * from listing_table WHERE user_name = :name")
+    fun getMyListings(name: String): LiveData<List<Listing>>
 
     @Query("SELECT * from listing_table WHERE category = :category")
     fun getCategory(category: Int): LiveData<List<Listing>>

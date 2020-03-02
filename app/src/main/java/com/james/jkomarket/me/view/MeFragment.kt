@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.james.jkomarket.R
+import com.james.jkomarket.me.adapter.MeListingAdapter
 import com.james.jkomarket.me.viewmodel.MeViewModel
 
 class MeFragment : Fragment() {
@@ -20,12 +23,22 @@ class MeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_me, container, false)
         meViewModel = ViewModelProvider(this).get(MeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_me, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        meViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+
+        var addListingButton: FloatingActionButton = view.findViewById(R.id.fab)
+        var recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
+
+        val adapter = MeListingAdapter(requireContext(), meViewModel)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        meViewModel.allMyListing.observe(viewLifecycleOwner, Observer { listings ->
+            listings?.let { adapter.setListing(it) }
         })
-        return root
+
+
+
+        return view
     }
 }

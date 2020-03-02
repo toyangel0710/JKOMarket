@@ -5,9 +5,9 @@ import com.james.jkomarket.product.model.Listing
 
 class ListingRepository(private val listingDao: ListingDao) {
 
-    suspend fun create(listing: Listing): Long = listingDao.insert(listing)
+    suspend fun insert(listing: Listing): Long = listingDao.insert(listing)
 
-    suspend fun delete(userName: String, id: Long) {
+    suspend fun delete(userName: String, id: Long): Int {
         // TODO Check if user mismatch
 
         return listingDao.delect(userName, id)
@@ -17,6 +17,10 @@ class ListingRepository(private val listingDao: ListingDao) {
         // TODO Check if user not exist
 
         return listingDao.getListing(id)
+    }
+
+    fun getMyListings(userName: String): LiveData<List<Listing>> {
+        return listingDao.getMyListings(userName)
     }
 
     fun getCategory(userName: String, category: Int): LiveData<List<Listing>> {
