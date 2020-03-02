@@ -9,4 +9,12 @@
     <string name="unknown_user">Unknown user</string>
     <string name="title_home">Home</string>
     <string name="title_me">Me</string>
+    <string name="listing_title">Listing Title</string>
+    <string name="hint_listing_title">Input the listing title</string>
+    <string name="listing_description">Description</string>
+    <string name="hint_listing_description">Input the description</string>
+    <string name="listing_price">Price</string>
+    <string name="hint_listing_price">Input the price</string>
+    <string name="listing_category">Category</string>
+    <string name="confirm">Confirm</string>
 </resources>

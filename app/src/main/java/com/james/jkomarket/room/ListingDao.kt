@@ -16,7 +16,7 @@ interface ListingDao {
     @Query("SELECT * from listing_table WHERE id = :id")
     fun getListing(id: Long): LiveData<List<Listing>>
 
-    @Query("SELECT * from listing_table WHERE user_name = :name")
+    @Query("SELECT * from listing_table WHERE user_name = :name ORDER BY id DESC")
     fun getMyListings(name: String): LiveData<List<Listing>>
 
     @Query("SELECT * from listing_table WHERE category = :category")

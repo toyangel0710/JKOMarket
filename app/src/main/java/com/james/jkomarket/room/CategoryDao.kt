@@ -13,6 +13,9 @@ interface CategoryDao {
     @Query("SELECT * from category_table WHERE id = :id")
     fun getCategory(id: Long): LiveData<List<Category>>
 
+    @Query("SELECT * from category_table")
+    fun getAll(): LiveData<List<Category>>
+
 
     @Query("DELETE FROM category_table")
     suspend fun deleteAll()
