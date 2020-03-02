@@ -1,17 +1,28 @@
 package com.james.jkomarket.product.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.james.jkomarket.account.UserState
+import com.james.jkomarket.product.model.Listing
+import com.james.jkomarket.room.JkoMarketDatabase
+import com.james.jkomarket.room.ListingRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: ListingRepository
+    lateinit var allListing: LiveData<List<Listing>>
+    private var userName: String?
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    init {
+        val listingDao = JkoMarketDatabase.getDatabase(application, viewModelScope).listingDao()
+        repository = ListingRepository(listingDao)
+        userName = UserState(application).userName
+        userName?.let {
+            // TODO Sort by listing count
+            allListing = repository.getTopCategory(userName!!)
+        }
     }
-    val text: LiveData<String> = _text
 
     fun refresh() {
-
+        // TODO SwipeRefresh action
     }
 }
