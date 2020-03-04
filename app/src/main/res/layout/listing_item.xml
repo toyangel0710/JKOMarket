@@ -5,14 +5,16 @@
     >
     <data>
         <variable
-            name="viewmodel"
-            type="com.james.jkomarket.me.viewmodel.MeViewModel" />
+            name="data"
+            type="com.james.jkomarket.product.model.Listing" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,14 +27,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="@{data.title}"
+                />
 
             <TextView
                 android:id="@+id/listingDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/listingTitle"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:text="@{data.description}"
+                />
 
             <ImageButton
                 android:id="@+id/listingDelete"
@@ -50,14 +56,18 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/listingDelete"
-                android:textColor="@android:color/holo_red_dark" />
+                android:textColor="@android:color/holo_red_dark"
+                android:text="@{String.valueOf(data.price)}"
+                />
 
             <TextView
                 android:id="@+id/listingId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/listingDelete" />
+                android:layout_toStartOf="@+id/listingDelete"
+                android:text="@{String.valueOf(data.id)}"
+                />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </layout>

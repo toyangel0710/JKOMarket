@@ -2,6 +2,7 @@ package com.james.jkomarket.room
 
 import androidx.lifecycle.LiveData
 import com.james.jkomarket.product.model.Listing
+import kotlinx.coroutines.flow.Flow
 
 class ListingRepository(private val listingDao: ListingDao) {
 
@@ -21,6 +22,11 @@ class ListingRepository(private val listingDao: ListingDao) {
 
     fun getMyListings(userName: String): LiveData<List<Listing>> {
         return listingDao.getMyListings(userName)
+    }
+
+
+    fun getMyListingsFlow(userName: String): Flow<MutableList<Listing>> {
+        return listingDao.getMyListingsFlow(userName)
     }
 
     fun getCategory(userName: String, category: Int): LiveData<List<Listing>> {

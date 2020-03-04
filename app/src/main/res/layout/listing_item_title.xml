@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="com.james.jkomarket.product.model.Category" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:minHeight="44dp"
+        android:paddingStart="6dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="6dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="@{data.name}"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</layout>

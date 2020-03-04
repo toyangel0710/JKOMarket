@@ -61,6 +61,9 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.androidxArchVersion"
 
+    // ReactiveStreams support for LiveData
+    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
+
     // ViewModel Kotlin support
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archLifecycleVersion"
 

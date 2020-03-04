@@ -4,12 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.james.jkomarket.R
+import com.james.jkomarket.databinding.ListingItemBinding
 import com.james.jkomarket.product.model.Listing
-import com.james.jkomarket.product.viewmodel.HomeViewModel
 
 
 class HomeListingAdapter internal constructor(
@@ -19,28 +16,24 @@ class HomeListingAdapter internal constructor(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var listings = emptyList<Listing>()
 
-    inner class ListingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.listingTitle)
-        val description: TextView = itemView.findViewById(R.id.listingDescription)
-        val price: TextView = itemView.findViewById(R.id.listingPrice)
-        val id: TextView = itemView.findViewById(R.id.listingId)
-        val delete: ImageButton = itemView.findViewById(R.id.listingDelete)
+        inner class ListingViewHolder(binding: ListingItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val binding = binding
+        fun bind(listing: Listing){
+            binding.data = listing
+            binding.listingDelete.visibility = View.INVISIBLE
+            binding.executePendingBindings()
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListingViewHolder {
         // TODO inflater anthoer view for category title
-
-        val itemView = inflater.inflate(R.layout.listing_item, parent, false)
-        return ListingViewHolder(itemView)
+        val binding = ListingItemBinding.inflate(inflater, parent, false)
+        return ListingViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListingViewHolder, position: Int) {
-        val listing = listings[position]
-        holder.title.text = listing.title
-        holder.description.text = listing.description
-        holder.price.text = listing.price.toString()
-        holder.id.text = listing.id.toString()
-        holder.delete.visibility = View.INVISIBLE
+        holder.bind(listings[position])
     }
 
     internal fun setListing(listings: List<Listing>) {
